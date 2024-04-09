@@ -1,0 +1,949 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={A Minimal Book Example},
+  pdfauthor={lennydeces},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{A Minimal Book Example}
+\author{lennydeces}
+\date{2024-04-08}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
+This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
+
+\hypertarget{usage}{%
+\section{Usage}\label{usage}}
+
+Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
+
+Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ short\ section} or \texttt{\#\#\#\ An\ even\ shorter\ section}.
+
+The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
+
+\hypertarget{render-book}{%
+\section{Render book}\label{render-book}}
+
+You can render the HTML version of this example book without changing anything:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the \textbf{Build} pane in the RStudio IDE, and
+\item
+  Click on \textbf{Build Book}, then select your output format, or select ``All formats'' if you'd like to use multiple formats from the same book source files.
+\end{enumerate}
+
+Or build the book from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
+
+\hypertarget{preview-book}{%
+\section{Preview book}\label{preview-book}}
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{helloworld}{%
+\chapter{Note}\label{helloworld}}
+
+\textbf{Windows}
+
+System➡️Display➡️Multiple displays➡️Detect other display➡️Detect→Buttons
+
+Right Click on File➡️Show more options
+
+Folder➡️Alt + Enter➡️Properties
+
+Folder➡️Ctrl + Shift + C➡️Copy as path
+
+Windows + P➡️Extend
+
+Windows + X➡️U➡️U
+
+Windows + Z
+
+Windows + Up Arrow \textbar{} Right Arrow \textbar{} Down Arrow \textbar{} Left Arrow
+
+\textbf{Adobe Acrobat}
+
+View➡️Page Display➡️Two Page Scrolling
+
+\textbf{Word}
+
+Review➡️Tracking➡️All Markup➡️Drop Down➡️Simple Markup \textbar{} All Markup \textbar{} No Markup
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{welcome}{%
+\chapter{Resource}\label{welcome}}
+
+\textbf{Application}
+
+\href{https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students}{OPT and STEM OPT}
+
+\href{https://opttimeline.com/IOE?CASE_TY=EAD}{Timeline}
+
+\href{https://www.uscis.gov/i-765}{I-765 Application for Employment Authorization}
+
+\href{https://i94.cbp.dhs.gov/I94/\#/recent-search}{I-94}
+
+\href{https://www.ice.gov/doclib/sevis/pdf/i983.pdf}{ICE Form I-983}
+
+\href{https://www.e-verify.gov/about-e-verify/e-verify-data/how-to-find-participating-employers}{E-Verify}
+
+\href{https://sevp.ice.gov/opt/\#/login}{SEVP Portal \textbar{} Student and Exchange Visitor Program Portal}
+
+\textbf{Ohio}
+
+\href{https://www.findyourohio.com/}{Findyourohio}
+
+\href{https://insight.streetlightdata.com/login/?/sso_auth=skilljar?next=\%2F}{StreetLight}
+
+\href{https://techcred.ohio.gov/}{TechCred}
+
+\href{https://morpc.public.ms2soft.com/tcds/tsearch.asp?loc=Morpc\&mod=}{Transportation Data Management System}
+
+\href{https://gis3.dot.state.oh.us/uab-review-readonly/}{Urban Area Boundary Review Viewer}
+
+\textbf{Management}
+
+\href{https://app.diagrams.net/}{Drawio}
+
+\href{https://www.processon.io/}{ProcessOn}
+
+\href{https://b3log.org/siyuan/en/}{Siyuan}
+
+\href{https://timelyapp.com/}{Timely}
+
+\href{https://whimsical.com/ai}{Whimsical}
+
+\href{https://xmind.app/share/}{Xmind}
+
+\textbf{Survey}
+
+\href{https://www.mentimeter.com/app/home}{Mentimeter}
+
+\href{https://www.slido.com/?experience_id=240223-z}{Slido}
+
+\href{https://auth-us.surveymonkey.com/login?state=hKFo2SB0eVdrbDlmUHVCanA4NW9xTjJ0eHpfQ1p6c3VyVXBGdaFupWxvZ2luo3RpZNkgUEltZ2JWUUdwdUkwMklsTU92aXpHZUFTOTYxZkxQU0ejY2lk2SBzQTM0RFVtUUE0RUlySkM3cTlRdVBDZjFUNzc4QmZMdg\&client=sA34DUmQA4EIrJC7q9QuPCf1T778BfLv\&protocol=oauth2\&prompt=login\&scope=openid\%20profile\%20email\&redirect_uri=https\%3A\%2F\%2Fwww.surveymonkey.com\%2Flogin\%2Fcallback\&ut_ctatext=Log\%20in\&ut_source=sem_lp\&ut_source2=sem\&ut_source3=desktop-header-cta\&sm.amp_did=298190b2-87d3-4312-9507-d990ba110712\&sm.amp_sid=1711919419251\&sm.locale=en\&sm.country=US\&sm.subdomain=www\&response_type=code\&response_mode=query\&nonce=RFJPUWRqRldzS2NpcjBwaUh5R3ViSVRha0ZTRlNodjE2TWs3dGxyUThoSg\%3D\%3D\&code_challenge=t5Pncc9fis59tpIh0qSelfUXG2VOsZKZJXyz2dROPc8\&code_challenge_method=S256\&auth0Client=eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjIuMC4xIn0\%3D\#/login}{SurveyMonkey}
+
+\textbf{Paper}
+
+\href{https://www.connectedpapers.com/}{Connected Papers}
+
+\href{https://endnote.com/}{EndNote}
+
+\href{https://scholar.google.com/}{Google Scholar}
+
+\href{https://libgen.li/}{Library Genesis}
+
+\href{https://www.mybib.com/\#/projects/Dp1Abo/citations}{MyBib}
+
+\href{https://www.researchgate.net/}{ResearchGate}
+
+\href{https://www.researchrabbit.ai/}{ResearchRabbit}
+
+\href{https://www.scidown.cn/}{Scidown}
+
+\href{https://sci-hub.41610.org/}{Sci-Hub}
+
+\href{https://www.webofscience.com/wos/author/search}{Web of Science}
+
+\textbf{Writing}
+
+\href{https://www.copy.ai/}{Copy.ai}
+
+\href{https://www.deepl.com/en/translator}{DeepL}
+
+\href{https://www.dochero.ai/en}{DocHero}
+
+\href{https://www.grammarly.com/plagiarism-checker}{Grammarly}
+
+\href{https://magickpen.com/}{MagicPen}
+
+\href{https://www.paperdigest.org/review/}{Paper Digest}
+
+\href{https://quillbot.com/}{QuillBot}
+
+\href{https://www.writefull.com/}{Writefull}
+
+\href{https://writesonic.com/}{Writesonic}
+
+\href{https://www.zotero.org/}{Zotero}
+
+\textbf{Design}
+
+\href{https://www.canva.com/templates/}{Canva}
+
+\href{https://diagram.com/}{Diagram}
+
+\href{https://www.figma.com/}{Figma}
+
+\href{https://www.usegalileo.ai/explore}{Galileo AI}
+
+\href{https://www.logoai.com/logo-maker}{Logoai}
+
+\href{https://looka.com/}{Looka}
+
+\href{https://www.noya.io/ui}{Noya}
+
+\href{https://uizard.io/templates/}{Uizard}
+
+\textbf{Drawing}
+
+\href{https://www.adobe.com/products/firefly.html?gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwd5ryWm7_kkdRXLvJCASelBPtk88u8PidKCH0UEBeuP_89Y1cbLY6gaAnLmEALw_wcB\&sdid=JM4FW6VL\&mv=search\&mv2=paidsearch\&ef_id=Cj0KCQjwk6SwBhDPARIsAJ59Gwd5ryWm7_kkdRXLvJCASelBPtk88u8PidKCH0UEBeuP_89Y1cbLY6gaAnLmEALw_wcB:G:s\&s_kwcid=AL!3085!3!677394754238!e!!g!!adobe\%20firefly!19870733758!148140507838\&gad_source=1}{Adobe Firefly}
+
+\href{https://booltool.boolv.tech/home}{Booltool}
+
+\href{https://clipdrop.co/}{Clipdrop}
+
+\href{https://dreamlike.art/}{Dreamlike.art}
+
+\href{https://www.dreamup.com/}{DreamUp}
+
+\href{https://www.flaticon.com/}{Flaticon}
+
+\href{https://hotpot.ai/}{Hotpot.ai}
+
+\href{https://huggingface.co/spaces/stabilityai/stable-diffusion}{Hugging Face}
+
+\href{https://www.jasper.ai/}{Jasper}
+
+\href{https://lexica.art/}{Lexica}
+
+\href{https://www.midjourney.com/home}{Midjourney}
+
+\textbf{Music}
+
+\href{https://audo.ai/}{Audo Studio}
+
+\href{https://www.assemblyai.com/}{AssemblyAI}
+
+\href{https://fakeyou.com/}{FakeYou}
+
+\href{http://LALAL.AIhttps://www.lalal.ai/?gad_source=1\&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwe8R6D_cisJF45mTx4pgQz01WhtUM2gqvDKZGUDPRqT4sIvC4rC2y4aAiX3EALw_wcB}{LALAL.AI}
+
+\href{https://www.naturalreaders.com/}{NaturalReader}
+
+\href{https://www.resemble.ai/}{Resemble.AI}
+
+\textbf{Video}
+
+\href{https://dreamfaceapp.com/}{DreamFace}
+
+\href{https://www.deepbrain.io/}{DeepBrain}
+
+\href{https://www.heygen.com/}{HeyGen}
+
+\href{https://lumen5.com/}{Lumen5}
+
+\href{https://www.rephrase.ai/}{Rephrase.ai}
+
+\href{https://runwayml.com/}{Runway}
+
+\href{https://www.synthesia.io/}{Synthesia}
+
+\href{https://synthesys.io/}{Synthesys}
+
+\textbf{Plot}
+
+\href{https://hiplot.com.cn/home/index.en.html}{Hiplot}
+
+\href{https://www.bic.ac.cn/ImageGP/}{ImageGP}
+
+\textbf{Presentation}
+
+\href{https://www.decktopus.com/?gad_source=1\&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwc4xWCC-ZY81-gYiYl_NSnhkTYhHrSkNBFMRRkgU9aTMm5EjFl7ZigaAnutEALw_wcB}{Decktopus AI}
+
+\href{https://powerpresent.ai/}{Powerpresent AI}
+
+\textbf{Coding}
+
+\href{https://ai-code-translator.vercel.app/}{Code Translator}
+
+\href{https://codeium.com/}{CodiumAI}
+
+\textbf{Productivity}
+
+\href{https://deepai.org/chat}{AI Chat}
+
+\href{https://claude.ai/login?returnTo=\%2F}{Anthropic}
+
+\href{https://www.chatba.com/}{ChatBA}
+
+\href{https://chat.openai.com/}{ChatGPT}
+
+\href{https://www.perplexity.ai/}{Perplexity}
+
+\href{https://poe.com/login}{Poe}
+
+\textbf{Plagiarism}
+
+\href{https://www.turnitin.com/}{Turnitin}
+
+\href{https://www.citethisforme.com/}{Cite This For Me}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{life}{%
+\chapter{Life}\label{life}}
+
+ATAS and UGC is there to help you navigate your academic path.
+
+You also have ASTC to support you on your academic path. CAPS will always be there to listen and to help.
+
+We have CPO to promote a safe SBU community.
+
+USG and ISO is there to bring campus involvement and student activity to your college life.
+
+Career Center has the resources and the''HandShake'' to prepare you to the future work environment.
+
+\textbf{\emph{Game}}
+
+Daifugo
+
+Killers of the Three Kingdoms
+
+Mahjong
+
+Murder Mystery
+
+Relay
+
+Werewolf
+
+Who is undercover
+
+You Draw, I Guess
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Scan Your Documents
+\end{enumerate}
+
+use the scanners provided or your smartphone to take a photo of each of your immigration documents:
+- Passport
+
+\begin{itemize}
+\item
+  Visa
+\item
+  Form I-20 / DS-2019
+\item
+  Admission Stamp
+\item
+  Previous I-20s (Transfer Students)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Retrieve your I-94
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Visit \url{https://i94.cbp.dhs.gov}
+\item
+  Check \texttt{\textquotesingle{}yes\textquotesingle{}} to consent to DHS' terms, click submit
+\item
+  Enter all required passport information
+\item
+  Click \texttt{“Get\ Most\ Recent\ I-94”}
+\item
+  Save as a \texttt{PDF\ file} on the desktop
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Pick up some life skills
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Cooking Skill
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Meat
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Bacon
+    \item
+      Beaf
+    \item
+      Chicken
+    \item
+      Pork
+    \item
+      Shrimp
+    \end{itemize}
+  \item
+    Vegetable
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Bamboo Shoots
+    \item
+      Bean Curd
+    \item
+      Bok Choy
+    \item
+      Cabbage
+    \item
+      Carrot
+    \item
+      Celery
+    \item
+      Cucumber
+    \item
+      Enoki
+    \item
+      Green Pepper
+    \item
+      Ham
+    \item
+      Lettuce
+    \item
+      Mushroom
+    \item
+      Potato
+    \item
+      Turnip
+    \end{itemize}
+  \item
+    Other
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Egg
+    \item
+      Tofu
+    \item
+      Tomato
+    \item
+      Woodear
+    \end{itemize}
+  \end{itemize}
+\item
+  Driving Skill
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Local
+  \item
+    Collector
+  \item
+    Arterial
+  \item
+    Interstate
+  \end{itemize}
+\item
+  Academic Skill
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Passive Learning
+  \item
+    Active Learning
+  \end{itemize}
+\item
+  Professional Skill
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Time Management
+  \item
+    Leadership
+  \item
+    Speech
+  \item
+    Confidence
+  \item
+    Collaboration
+  \item
+    Communication
+  \item
+    Conflict Resolution
+  \item
+    Critical Thinking
+  \item
+    Creativity
+  \item
+    Attention to Details
+  \item
+    Problem Solving
+  \item
+    Decision Making
+  \end{itemize}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{software-and-platform}{%
+\chapter{Software and Platform}\label{software-and-platform}}
+
+\hypertarget{software}{%
+\section{Software}\label{software}}
+
+Google Chrome
+
+Word
+
+PowerPoint
+
+Excel
+
+JMP
+
+Numbers
+
+Tableau
+
+Tableau Prep Builder
+
+VOSviewer
+
+GeoDa
+
+QGIS
+
+R Studio
+
+Visual Studio Code
+
+Adobe InDesign
+
+Adobe Illustrator
+
+Adobe Photoshop
+
+Zoom
+
+\hypertarget{platform}{%
+\section{Platform}\label{platform}}
+
+Simplilearn
+
+Ryan Farish
+
+V.K
+
+Pianoboy
+
+Charming Data
+
+3Blue1Brown
+
+SketchUp
+
+One Skill PowerPoint
+
+Open Geospatial Solutions
+
+SourceCAD
+
+Tutorialspoint
+
+Geography King
+
+Learnit Training
+
+Wendover Productions
+
+Cindy Stats
+
+Art of Visualization
+
+Webflow
+
+Academic Lesson
+
+Big Data TX
+
+Photoshop Tutorials by Layer Life
+
+MIT OpenCourseWare
+
+Engineering Academy
+
+Kim Hyung Suk - Topic
+
+CE 355 Principles of Transportation Engineering
+
+Vizual Intelligence
+
+Ruth M Hummel
+
+Julian Parris
+
+Analytics University
+
+BurkeyAcademy
+
+The Real Estate Classroom
+
+US Realty Training
+
+USLawEssentials
+
+CitiesX
+
+Serrano.Academy
+
+StataCorp LLC
+
+Quimbee
+
+PrepAgent
+
+Skills Factory
+
+FordhamStats
+
+Jalayer Academy
+
+The Teacher
+
+Programming with Mosh
+
+Sele Training
+
+Envato Tuts+
+
+City Beautiful
+
+Visme
+
+Map \& GIS Library
+
+Mr.~Beat
+
+Planetizen Courses
+
+GeoGebra
+
+The Organic Chemistry Tutor
+
+Aaron Shkoler
+
+Marginal Revolution University
+
+Les Enfants du Top 50
+
+Simplify Insights
+
+The Information Lab
+
+freeCodeCamp.org
+
+Tableau
+
+CS50
+
+JMP Statistical Discovery
+
+MyOnlineTrainingHub
+
+ritvikmath
+
+StatQuest with Josh Starmer
+
+GeoDa Software
+
+Logan Burchett
+
+aquarius20011989
+
+zedstatistics
+
+\hypertarget{philosophy}{%
+\chapter{Philosophy}\label{philosophy}}
+
+A
+
+Add, Create, Insert
+
+Analyze
+
+Annotate, Mark
+
+Automatic Fill
+
+B
+
+Beta
+
+Bookmark, Favorite
+
+C
+
+Calculate, Derive
+
+Certificate, Progress
+
+Cloud
+
+Code
+
+Compare
+
+Customize
+
+E
+
+Edit
+
+Explore
+
+F
+
+File
+
+Filter
+
+Format/Style
+
+H
+
+Help
+
+Hide
+
+History
+
+L
+
+Layer
+
+Layout
+
+M
+
+Manage, Organize, Reorder
+
+Mode
+
+N
+
+Note
+
+O
+
+Open
+
+P
+
+Parameter
+
+Profile
+
+R
+
+Reorder
+
+Recommendation
+
+Reset
+
+Review
+
+S
+
+Save, Version
+
+Search
+
+Select
+
+Setting
+
+Share
+
+Sort
+
+T
+
+Tag
+
+Template
+
+Test
+
+Time
+
+Tool
+
+Translation
+
+Tutorial
+
+V
+
+Version
+
+View
+
+W
+
+Weather
+
+Window
+
+Other
+
+Apply + Okay
+
+Back + Forward
+
+\end{document}

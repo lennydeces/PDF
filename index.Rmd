@@ -1,0 +1,765 @@
+---
+title: "A Minimal Book Example"
+author: "lennydeces"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+---
+
+# About
+
+This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+
+## Usage 
+
+Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+
+Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+
+The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+
+## Render book
+
+You can render the HTML version of this example book without changing anything:
+
+1. Find the **Build** pane in the RStudio IDE, and
+
+1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+
+Or build the book from the R console:
+
+```{r, eval=FALSE}
+bookdown::render_book()
+```
+
+To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+
+## Preview book
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
+
+```{r eval=FALSE}
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+# Note {#helloworld}
+
+<style>
+  .iframe-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between;
+  }
+
+  .iframe-container iframe {
+    width: 385px; /* Adjust the width as needed */
+    height: 500px; /* Adjust the height as needed */
+    margin-right: 10px; /* Add spacing by adjusting this value */
+  }
+
+  .iframe-container .full-width {
+    width: 780px; /* Make this iframe spread the full width */
+    height: 500px; /* Adjust the height as needed */
+  }
+</style>
+
+<div class="iframe-container">
+  <iframe src="https://www.randymajors.org/zipcodegmap"></iframe>
+  <iframe src="https://developers.google.com/public-data/docs/canonical/states_csv"></iframe>
+</div>
+
+<div class="iframe-container">
+  <iframe class="full-width" src="https://www.latlong.net/"></iframe>
+</div>
+
+**Windows**
+
+System➡️Display➡️Multiple displays➡️Detect other display➡️Detect→Buttons
+
+Right Click on File➡️Show more options
+
+Folder➡️Alt + Enter➡️Properties
+
+Folder➡️Ctrl + Shift + C➡️Copy as path
+
+Windows + P➡️Extend
+
+Windows + X➡️U➡️U
+
+Windows + Z
+
+Windows + Up Arrow | Right Arrow | Down Arrow | Left Arrow
+
+**Adobe Acrobat**
+
+View➡️Page Display➡️Two Page Scrolling
+
+**Word**
+
+Review➡️Tracking➡️All Markup➡️Drop Down➡️Simple Markup | All Markup | No Markup
+
+<!-- Note -->
+
+---
+
+# Resource {#welcome}
+
+**Application**
+
+[OPT and STEM OPT](https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students)
+
+[Timeline](https://opttimeline.com/IOE?CASE_TY=EAD)
+
+[I-765 Application for Employment Authorization](https://www.uscis.gov/i-765)
+
+[I-94](https://i94.cbp.dhs.gov/I94/#/recent-search)
+
+[ICE Form I-983](https://www.ice.gov/doclib/sevis/pdf/i983.pdf)
+
+[E-Verify](https://www.e-verify.gov/about-e-verify/e-verify-data/how-to-find-participating-employers)
+
+[SEVP Portal | Student and Exchange Visitor Program Portal](https://sevp.ice.gov/opt/#/login)
+<br>
+<br>
+
+**Ohio**
+
+[Findyourohio](https://www.findyourohio.com/)
+
+[StreetLight](https://insight.streetlightdata.com/login/?/sso_auth=skilljar?next=%2F)
+
+[TechCred](https://techcred.ohio.gov/)
+
+[Transportation Data Management System](https://morpc.public.ms2soft.com/tcds/tsearch.asp?loc=Morpc&mod=)
+
+[Urban Area Boundary Review Viewer](https://gis3.dot.state.oh.us/uab-review-readonly/)
+<br>
+<br>
+
+**Management**
+
+[Drawio](https://app.diagrams.net/)
+
+[ProcessOn](https://www.processon.io/)
+
+[Siyuan](https://b3log.org/siyuan/en/)
+
+[Timely](https://timelyapp.com/)
+
+[Whimsical](https://whimsical.com/ai)
+
+[Xmind](https://xmind.app/share/)
+<br>
+<br>
+
+**Survey**
+
+[Mentimeter](https://www.mentimeter.com/app/home)
+
+[Slido](https://www.slido.com/?experience_id=240223-z)
+
+[SurveyMonkey](https://auth-us.surveymonkey.com/login?state=hKFo2SB0eVdrbDlmUHVCanA4NW9xTjJ0eHpfQ1p6c3VyVXBGdaFupWxvZ2luo3RpZNkgUEltZ2JWUUdwdUkwMklsTU92aXpHZUFTOTYxZkxQU0ejY2lk2SBzQTM0RFVtUUE0RUlySkM3cTlRdVBDZjFUNzc4QmZMdg&client=sA34DUmQA4EIrJC7q9QuPCf1T778BfLv&protocol=oauth2&prompt=login&scope=openid%20profile%20email&redirect_uri=https%3A%2F%2Fwww.surveymonkey.com%2Flogin%2Fcallback&ut_ctatext=Log%20in&ut_source=sem_lp&ut_source2=sem&ut_source3=desktop-header-cta&sm.amp_did=298190b2-87d3-4312-9507-d990ba110712&sm.amp_sid=1711919419251&sm.locale=en&sm.country=US&sm.subdomain=www&response_type=code&response_mode=query&nonce=RFJPUWRqRldzS2NpcjBwaUh5R3ViSVRha0ZTRlNodjE2TWs3dGxyUThoSg%3D%3D&code_challenge=t5Pncc9fis59tpIh0qSelfUXG2VOsZKZJXyz2dROPc8&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjIuMC4xIn0%3D#/login)
+<br>
+<br>
+
+**Paper**
+
+[Connected Papers](https://www.connectedpapers.com/)
+
+[EndNote](https://endnote.com/)
+
+[Google Scholar](https://scholar.google.com/)
+
+[Library Genesis](https://libgen.li/)
+
+[MyBib](https://www.mybib.com/#/projects/Dp1Abo/citations)
+
+[ResearchGate](https://www.researchgate.net/)
+
+[ResearchRabbit](https://www.researchrabbit.ai/)
+
+[Scidown](https://www.scidown.cn/)
+
+[Sci-Hub](https://sci-hub.41610.org/)
+
+[Web of Science](https://www.webofscience.com/wos/author/search)
+<br>
+<br>
+
+**Writing**
+
+[Copy.ai](https://www.copy.ai/)
+
+[DeepL](https://www.deepl.com/en/translator)
+
+[DocHero](https://www.dochero.ai/en)
+
+[Grammarly](https://www.grammarly.com/plagiarism-checker)
+
+[MagicPen](https://magickpen.com/)
+
+[Paper Digest](https://www.paperdigest.org/review/)
+
+[QuillBot](https://quillbot.com/)
+
+[Writefull](https://www.writefull.com/)
+
+[Writesonic](https://writesonic.com/)
+
+[Zotero](https://www.zotero.org/)
+<br>
+<br>
+
+**Design**
+
+[Canva](https://www.canva.com/templates/)
+
+[Diagram](https://diagram.com/)
+
+[Figma](https://www.figma.com/)
+
+[Galileo AI](https://www.usegalileo.ai/explore)
+
+[Logoai](https://www.logoai.com/logo-maker)
+
+[Looka](https://looka.com/)
+
+[Noya](https://www.noya.io/ui)
+
+[Uizard](https://uizard.io/templates/)
+<br>
+<br>
+
+**Drawing**
+
+[Adobe Firefly](https://www.adobe.com/products/firefly.html?gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwd5ryWm7_kkdRXLvJCASelBPtk88u8PidKCH0UEBeuP_89Y1cbLY6gaAnLmEALw_wcB&sdid=JM4FW6VL&mv=search&mv2=paidsearch&ef_id=Cj0KCQjwk6SwBhDPARIsAJ59Gwd5ryWm7_kkdRXLvJCASelBPtk88u8PidKCH0UEBeuP_89Y1cbLY6gaAnLmEALw_wcB:G:s&s_kwcid=AL!3085!3!677394754238!e!!g!!adobe%20firefly!19870733758!148140507838&gad_source=1)
+
+[Booltool](https://booltool.boolv.tech/home)
+
+[Clipdrop](https://clipdrop.co/)
+
+[Dreamlike.art](https://dreamlike.art/)
+
+[DreamUp](https://www.dreamup.com/)
+
+[Flaticon](https://www.flaticon.com/)
+
+[Hotpot.ai](https://hotpot.ai/)
+
+[Hugging Face](https://huggingface.co/spaces/stabilityai/stable-diffusion)
+
+[Jasper](https://www.jasper.ai/)
+
+[Lexica](https://lexica.art/)
+
+[Midjourney](https://www.midjourney.com/home)
+<br>
+<br>
+
+**Music**
+
+[Audo Studio](https://audo.ai/)
+
+[AssemblyAI](https://www.assemblyai.com/)
+
+[FakeYou](https://fakeyou.com/)
+
+[LALAL.AI](http://LALAL.AIhttps://www.lalal.ai/?gad_source=1&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwe8R6D_cisJF45mTx4pgQz01WhtUM2gqvDKZGUDPRqT4sIvC4rC2y4aAiX3EALw_wcB)
+
+[NaturalReader](https://www.naturalreaders.com/)
+
+[Resemble.AI](https://www.resemble.ai/)
+<br>
+<br>
+
+**Video**
+
+[DreamFace](https://dreamfaceapp.com/)
+
+[DeepBrain](https://www.deepbrain.io/)
+
+[HeyGen](https://www.heygen.com/)
+
+[Lumen5](https://lumen5.com/)
+
+[Rephrase.ai](https://www.rephrase.ai/)
+
+[Runway](https://runwayml.com/)
+
+[Synthesia](https://www.synthesia.io/)
+
+[Synthesys](https://synthesys.io/)
+<br>
+<br>
+
+**Plot**
+
+[Hiplot](https://hiplot.com.cn/home/index.en.html)
+
+[ImageGP](https://www.bic.ac.cn/ImageGP/)
+<br>
+<br>
+
+**Presentation**
+
+[Decktopus AI](https://www.decktopus.com/?gad_source=1&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwc4xWCC-ZY81-gYiYl_NSnhkTYhHrSkNBFMRRkgU9aTMm5EjFl7ZigaAnutEALw_wcB)
+
+[Powerpresent AI](https://powerpresent.ai/)
+<br>
+<br>
+
+**Coding**
+
+[Code Translator](https://ai-code-translator.vercel.app/)
+
+[CodiumAI](https://codeium.com/)
+<br>
+<br>
+
+**Productivity**
+
+[AI Chat](https://deepai.org/chat)
+
+[Anthropic](https://claude.ai/login?returnTo=%2F)
+
+[ChatBA](https://www.chatba.com/)
+
+[ChatGPT](https://chat.openai.com/)
+
+[Perplexity](https://www.perplexity.ai/)
+
+[Poe](https://poe.com/login)
+<br>
+<br>
+
+**Plagiarism**
+
+[Turnitin](https://www.turnitin.com/)
+
+[Cite This For Me](https://www.citethisforme.com/)
+
+<!-- Resource -->
+
+---
+
+# Life
+
+ATAS and UGC is there to help you navigate your academic path.
+
+You also have ASTC to support you on your academic path. CAPS will always be there to listen and to help.
+
+We have CPO to promote a safe SBU community.
+
+USG and ISO is there to bring campus involvement and student activity to your college life.
+
+Career Center has the resources and the"HandShake" to prepare you to the future work environment.
+
+<details>
+  <summary>***Game***</summary>
+  Daifugo
+  
+  Killers of the Three Kingdoms
+  
+  Mahjong
+  
+  Murder Mystery
+  
+  Relay
+  
+  Werewolf
+  
+  Who is undercover
+  
+  You Draw, I Guess
+</details>
+
+<br>
+
+1. Scan Your Documents
+
+use the scanners provided or your smartphone to take a photo of each of your immigration documents:
+  - Passport
+  
+  - Visa
+  
+  - Form I-20 / DS-2019
+  
+  - Admission Stamp
+  
+  - Previous I-20s (Transfer Students)
+  
+  <br>
+
+2. Retrieve your I-94
+  - Visit [https://i94.cbp.dhs.gov](https://i94.cbp.dhs.gov)
+  
+  - Check `'yes'` to consent to DHS' terms, click submit
+  
+  - Enter all required passport information
+  
+  - Click `“Get Most Recent I-94”`
+  
+  - Save as a `PDF file` on the desktop
+  
+  <br>
+  
+3. Pick up some life skills
+  - Cooking Skill
+    - Meat
+      - Bacon
+      - Beaf
+      - Chicken
+      - Pork
+      - Shrimp
+    - Vegetable
+      - Bamboo Shoots
+      - Bean Curd
+      - Bok Choy
+      - Cabbage
+      - Carrot
+      - Celery
+      - Cucumber
+      - Enoki
+      - Green Pepper
+      - Ham
+      - Lettuce
+      - Mushroom
+      - Potato
+      - Turnip
+    - Other
+      - Egg
+      - Tofu
+      - Tomato
+      - Woodear
+  - Driving Skill
+    - Local
+    - Collector
+    - Arterial
+    - Interstate
+  - Academic Skill
+    - Passive Learning
+    - Active Learning
+  - Professional Skill
+    - Time Management
+    - Leadership
+    - Speech
+    - Confidence
+    - Collaboration
+    - Communication
+    - Conflict Resolution
+    - Critical Thinking
+    - Creativity
+    - Attention to Details
+    - Problem Solving
+    - Decision Making
+    
+<!-- Skill -->
+
+---
+
+# Software and Platform
+
+## Software
+Google Chrome
+
+Word
+
+PowerPoint
+
+Excel
+
+JMP
+
+Numbers
+
+Tableau
+
+Tableau Prep Builder
+
+VOSviewer
+
+GeoDa
+
+QGIS
+
+R Studio
+
+Visual Studio Code
+
+Adobe InDesign
+
+Adobe Illustrator
+
+Adobe Photoshop
+
+Zoom
+
+## Platform
+
+Simplilearn
+
+Ryan Farish
+
+V.K
+
+Pianoboy
+
+Charming Data
+
+3Blue1Brown
+
+SketchUp
+
+One Skill PowerPoint
+
+Open Geospatial Solutions
+
+SourceCAD
+
+Tutorialspoint
+
+Geography King
+
+Learnit Training
+
+Wendover Productions
+
+Cindy Stats
+
+Art of Visualization
+
+Webflow
+
+Academic Lesson
+
+Big Data TX
+
+Photoshop Tutorials by Layer Life
+
+MIT OpenCourseWare
+
+Engineering Academy
+
+Kim Hyung Suk - Topic
+
+CE 355 Principles of Transportation Engineering
+
+Vizual Intelligence
+
+Ruth M Hummel
+
+Julian Parris
+
+Analytics University
+
+BurkeyAcademy
+
+The Real Estate Classroom
+
+US Realty Training
+
+USLawEssentials
+
+CitiesX
+
+Serrano.Academy
+
+StataCorp LLC
+
+Quimbee
+
+PrepAgent
+
+Skills Factory
+
+FordhamStats
+
+Jalayer Academy
+
+The Teacher
+
+Programming with Mosh
+
+Sele Training
+
+Envato Tuts+
+
+City Beautiful
+
+Visme
+
+Map & GIS Library
+
+Mr. Beat
+
+Planetizen Courses
+
+GeoGebra
+
+The Organic Chemistry Tutor
+
+Aaron Shkoler
+
+Marginal Revolution University
+
+Les Enfants du Top 50
+
+Simplify Insights
+
+The Information Lab
+
+freeCodeCamp.org
+
+Tableau
+
+CS50
+
+JMP Statistical Discovery
+
+MyOnlineTrainingHub
+
+ritvikmath
+
+StatQuest with Josh Starmer
+
+GeoDa Software
+
+Logan Burchett
+
+aquarius20011989
+
+zedstatistics
+
+# Philosophy
+
+<h3>A</h3>
+Add, Create, Insert
+
+Analyze
+
+Annotate, Mark
+
+Automatic Fill
+
+<h3>B</h3>
+Beta
+
+Bookmark, Favorite
+
+<h3>C</h3>
+Calculate, Derive
+
+Certificate, Progress
+
+Cloud
+
+Code
+
+Compare
+
+Customize
+
+<h3>E</h3>
+Edit
+
+Explore
+
+<h3>F</h3>
+File
+
+Filter
+
+Format/Style
+
+<h3>H</h3>
+Help
+
+Hide
+
+History
+
+<h3>L</h3>
+Layer
+
+Layout
+
+<h3>M</h3>
+Manage, Organize, Reorder
+
+Mode
+
+<h3>N</h3>
+Note
+
+<h3>O</h3>
+Open
+
+<h3>P</h3>
+Parameter
+
+Profile
+
+<h3>R</h3>
+Reorder
+
+Recommendation
+
+Reset
+
+Review
+
+<h3>S</h3>
+Save, Version
+
+Search
+
+Select
+
+Setting
+
+Share
+
+Sort
+
+<h3>T</h3>
+Tag
+
+Template
+
+Test
+
+Time
+
+Tool
+
+Translation
+
+Tutorial
+
+<h3>V</h3>
+Version
+
+View
+
+<h3>W</h3>
+Weather
+
+Window
+
+<h3>Other</h3>
+
+Apply + Okay
+
+Back + Forward
+
+<!-- Philosophy -->
